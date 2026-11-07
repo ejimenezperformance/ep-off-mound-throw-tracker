@@ -8,3 +8,6 @@
 *.pkl
 __pycache__/
 .venv/
+
+# allow the demo video (own footage, used with the athlete's permission)
+!demo/*.mp4

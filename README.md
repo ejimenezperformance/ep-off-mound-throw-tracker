@@ -33,6 +33,10 @@ It takes a video and automatically counts the throws made by the pitcher. It ret
 
 The method is **rule-based**: every decision can be explained to a coach, and it does not need a large labeled dataset.
 
+### Demo
+
+[`demo/front_view_test_annotated.mp4`](demo/front_view_test_annotated.mp4): an Emerson Performance client throwing from the mound (catcher's view), with the skeleton, the throw counter and the "THROW DETECTED" flag. 7 of 7 throws detected. Own footage, published with the athlete's permission.
+
 ### Validation
 
 Each video was counted by hand first, then compared with the system.
@@ -61,7 +65,7 @@ Full detail: [`results/validation.csv`](results/validation.csv). Per-video outpu
 - **Throwing hand is not reliable.** The field `signal_arm` is the wrist with the strongest 2D movement, not the pitcher's throwing hand. From the catcher's view, the throwing arm moves mostly toward the camera (little movement on screen), while the glove arm moves sideways, so a right-handed pitcher was reported as `L`. Forcing the right wrist made it worse (5 of 7 throws). Handedness should come from the roster, and a fix needs depth information (3D pose or a second camera).
 - All throws here are high-effort. Soft, short catch-play throws will produce smaller arm-speed peaks and are the main risk of missed throws.
 - The 2.5 s minimum gap can merge two real throws if they are very close together.
-- The videos are not stored in this repo (third-party footage). The code runs on any video you provide.
+- Third-party videos are not stored in this repo. The code runs on any video you provide.
 
 ### Next steps
 
@@ -107,6 +111,10 @@ Toma un video y cuenta automáticamente los tiros del lanzador. Entrega:
 
 El método está **basado en reglas**: cada decisión se le puede explicar a un coach, y no necesita miles de videos etiquetados.
 
+### Demo
+
+[`demo/front_view_test_annotated.mp4`](demo/front_view_test_annotated.mp4): un cliente de Emerson Performance lanzando desde el montículo (vista del catcher), con el esqueleto, el contador y el aviso "THROW DETECTED". 7 de 7 tiros detectados. Video propio, publicado con el permiso del atleta.
+
 ### Validación
 
 Cada video se contó primero a mano y luego se comparó con el sistema.
@@ -133,7 +141,7 @@ Cada video se contó primero a mano y luego se comparó con el sistema.
 - **El brazo de lanzar no es confiable.** El campo `signal_arm` es la muñeca con más movimiento en 2D, no la mano de lanzar. Desde la vista del catcher, el brazo de lanzar se mueve sobre todo hacia la cámara (poco movimiento en pantalla), mientras el brazo del guante se mueve hacia el lado; por eso un pitcher derecho salió como `L`. Forzar la muñeca derecha lo empeoró (5 de 7 tiros). La mano de lanzar debe venir del roster, y corregirlo necesita profundidad (pose en 3D o una segunda cámara).
 - Todos los tiros de estos videos son fuertes. Los tiros suaves y cortos de catch dan picos más bajos y son el mayor riesgo de tiros perdidos.
 - La regla de 2.5 s puede juntar dos tiros reales si están muy seguidos.
-- Los videos no están en este repo (son de terceros). El código funciona con cualquier video.
+- Los videos de terceros no están en este repo. El código funciona con cualquier video.
 
 ### Próximos pasos
 
