@@ -1,4 +1,4 @@
-"""EP Off-Mound Throw Tracker - prototype v0.2
+"""EP Off-Mound Throw Tracker - prototype v0.2.1
 Emerson Jimenez | Emerson Performance
 
 Counts the throws a pitcher makes in a video (catch play, long toss, flat ground,
@@ -172,7 +172,7 @@ def detect(video, out_dir):
     result = {"video": os.path.basename(video), "fps": fps, "frames": n,
               "camera_cuts_sec": [round(c / fps, 2) for c in cuts],
               "people_tracked": len(cands), "thrower_tracks": thrower,
-              "throwing_arm": arm, "throws_detected": len(throws), "throws": throws,
+              "signal_arm": arm, "throws_detected": len(throws), "throws": throws,
               "thrower_visible_pct": round(100 * sum(r is not None for r in rows) / n, 1)}
     with open(os.path.join(out_dir, "throws.json"), "w") as f:
         json.dump(result, f, indent=2)

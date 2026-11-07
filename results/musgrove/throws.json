@@ -7,7 +7,7 @@
   "thrower_tracks": [
     2
   ],
-  "throwing_arm": "R",
+  "signal_arm": "R",
   "throws_detected": 3,
   "throws": [
     {

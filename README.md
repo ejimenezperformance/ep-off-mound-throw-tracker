@@ -33,9 +33,11 @@ It takes a video and automatically counts the throws made by the pitcher. It ret
 
 The method is **rule-based**: every decision can be explained to a coach, and it does not need a large labeled dataset.
 
-### Validation (v0.2)
+### Validation
 
 Each video was counted by hand first, then compared with the system.
+
+**Tuning set** (the rules were adjusted while looking at these videos):
 
 | Video | Type | Difficulty | Manual | Detected | False positives | Missed |
 |---|---|---|---|---|---|---|
@@ -43,12 +45,20 @@ Each video was counted by hand first, then compared with the system.
 | Musgrove | Bullpen | Pitching coach larger than the pitcher in the frame | 3 | 3 | 0 | 0 |
 | Yamamoto | Long toss session | Camera cuts, slow motion, near and far shots, coaches in background | 6 | 6 | 0 | 0 |
 
+**Independent test** (new video, rules frozen, no changes made after seeing it):
+
+| Video | Type | Difficulty | Manual | Detected | False positives | Missed |
+|---|---|---|---|---|---|---|
+| Front-view test | Mound throws | Catcher's view (new angle); pitcher turns his back after each throw, so tracking is lost and recovered 7 times | 7 | 7 | 0 | 0 |
+
 Full detail: [`results/validation.csv`](results/validation.csv). Per-video output: [`results/`](results/).
 
-**CONFIRMED:** 10 of 10 throws detected, with no false positives, on these 3 videos.
+**CONFIRMED:** 17 of 17 throws detected with no false positives across 4 videos; **7 of 7 on the independent test video**.
 
 **INTERPRETATION / LIMITATIONS:**
-- The rules were tuned while looking at these same 3 videos. The first long-toss run produced 3 false positives (a coach gesturing in the background and a post-throw recovery). Those were fixed with the "one thrower at a time" and the 2.5 s gap rules. **This 10/10 is not an independent accuracy measure.** The next step is to test on new, unseen videos.
+- The rules were tuned on the first 3 videos. The first long-toss run produced 3 false positives (a coach gesturing in the background and a post-throw recovery), fixed with the "one thrower at a time" and 2.5 s gap rules. Only the front-view video is an independent test, and one video is a small sample.
+- **Throw time:** on the front-view test, 2 of 7 throws were timed about 0.4–0.5 s late. When the pitcher turns his back after release, the arm produces a spike larger than the release itself, and the system keeps the largest spike. The count is correct; the exact time is not.
+- **Throwing hand is not reliable.** The field `signal_arm` is the wrist with the strongest 2D movement, not the pitcher's throwing hand. From the catcher's view, the throwing arm moves mostly toward the camera (little movement on screen), while the glove arm moves sideways, so a right-handed pitcher was reported as `L`. Forcing the right wrist made it worse (5 of 7 throws). Handedness should come from the roster, and a fix needs depth information (3D pose or a second camera).
 - All throws here are high-effort. Soft, short catch-play throws will produce smaller arm-speed peaks and are the main risk of missed throws.
 - The 2.5 s minimum gap can merge two real throws if they are very close together.
 - The videos are not stored in this repo (third-party footage). The code runs on any video you provide.
@@ -97,9 +107,11 @@ Toma un video y cuenta automáticamente los tiros del lanzador. Entrega:
 
 El método está **basado en reglas**: cada decisión se le puede explicar a un coach, y no necesita miles de videos etiquetados.
 
-### Validación (v0.2)
+### Validación
 
 Cada video se contó primero a mano y luego se comparó con el sistema.
+
+**Videos de ajuste** (las reglas se ajustaron mirando estos videos):
 
 | Video | Tipo | Dificultad | A mano | Sistema | Falsos | Perdidos |
 |---|---|---|---|---|---|---|
@@ -107,10 +119,18 @@ Cada video se contó primero a mano y luego se comparó con el sistema.
 | Musgrove | Bullpen | El coach se ve más grande que el pitcher | 3 | 3 | 0 | 0 |
 | Yamamoto | Sesión de long toss | Cortes de cámara, cámara lenta, tomas cerca y lejos, coaches al fondo | 6 | 6 | 0 | 0 |
 
-**CONFIRMADO:** 10 de 10 tiros detectados, sin tiros falsos, en estos 3 videos.
+**Prueba independiente** (video nuevo, reglas congeladas, sin cambios después de verlo):
+
+| Video | Tipo | Dificultad | A mano | Sistema | Falsos | Perdidos |
+|---|---|---|---|---|---|---|
+| Prueba de frente | Tiros desde el montículo | Vista del catcher (ángulo nuevo); el pitcher se voltea de espaldas después de cada tiro y el sistema lo pierde y lo recupera 7 veces | 7 | 7 | 0 | 0 |
+
+**CONFIRMADO:** 17 de 17 tiros detectados, sin tiros falsos, en 4 videos; **7 de 7 en la prueba independiente**.
 
 **INTERPRETACIÓN / LIMITACIONES:**
-- Las reglas se ajustaron mirando estos mismos 3 videos. La primera corrida del long toss dio 3 tiros falsos (un coach haciendo gestos al fondo y la recuperación después de un tiro). Se corrigieron con las reglas de "un lanzador a la vez" y "mínimo 2.5 s entre tiros". **Este 10/10 no es una medida independiente de precisión.** El siguiente paso es probar con videos nuevos.
+- Las reglas se ajustaron con los primeros 3 videos. La primera corrida del long toss dio 3 tiros falsos (un coach haciendo gestos al fondo y la recuperación después de un tiro), corregidos con las reglas de "un lanzador a la vez" y "mínimo 2.5 s entre tiros". Solo el video de frente es una prueba independiente, y un video es una muestra pequeña.
+- **Hora del tiro:** en la prueba de frente, 2 de 7 tiros quedaron marcados unos 0.4–0.5 s tarde. Cuando el pitcher se voltea de espaldas, el brazo hace un pico más alto que el del tiro, y el sistema se queda con el pico más alto. El conteo es correcto; el momento exacto no.
+- **El brazo de lanzar no es confiable.** El campo `signal_arm` es la muñeca con más movimiento en 2D, no la mano de lanzar. Desde la vista del catcher, el brazo de lanzar se mueve sobre todo hacia la cámara (poco movimiento en pantalla), mientras el brazo del guante se mueve hacia el lado; por eso un pitcher derecho salió como `L`. Forzar la muñeca derecha lo empeoró (5 de 7 tiros). La mano de lanzar debe venir del roster, y corregirlo necesita profundidad (pose en 3D o una segunda cámara).
 - Todos los tiros de estos videos son fuertes. Los tiros suaves y cortos de catch dan picos más bajos y son el mayor riesgo de tiros perdidos.
 - La regla de 2.5 s puede juntar dos tiros reales si están muy seguidos.
 - Los videos no están en este repo (son de terceros). El código funciona con cualquier video.

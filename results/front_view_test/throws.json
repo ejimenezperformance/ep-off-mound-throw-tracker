@@ -1,0 +1,70 @@
+{
+  "video": "front_view_test.mov",
+  "fps": 59.94513867723255,
+  "frames": 1609,
+  "camera_cuts_sec": [],
+  "people_tracked": 8,
+  "thrower_tracks": [
+    1,
+    5,
+    8,
+    12,
+    7,
+    4,
+    10
+  ],
+  "signal_arm": "L",
+  "throws_detected": 7,
+  "throws": [
+    {
+      "throw": 1,
+      "frame": 265,
+      "time_sec": 4.42,
+      "peak_arm_speed": 1.315,
+      "track_id": 1
+    },
+    {
+      "throw": 2,
+      "frame": 467,
+      "time_sec": 7.79,
+      "peak_arm_speed": 0.97,
+      "track_id": 4
+    },
+    {
+      "throw": 3,
+      "frame": 775,
+      "time_sec": 12.93,
+      "peak_arm_speed": 1.194,
+      "track_id": 5
+    },
+    {
+      "throw": 4,
+      "frame": 942,
+      "time_sec": 15.71,
+      "peak_arm_speed": 1.124,
+      "track_id": 7
+    },
+    {
+      "throw": 5,
+      "frame": 1166,
+      "time_sec": 19.45,
+      "peak_arm_speed": 1.147,
+      "track_id": 8
+    },
+    {
+      "throw": 6,
+      "frame": 1350,
+      "time_sec": 22.52,
+      "peak_arm_speed": 0.659,
+      "track_id": 10
+    },
+    {
+      "throw": 7,
+      "frame": 1572,
+      "time_sec": 26.22,
+      "peak_arm_speed": 1.088,
+      "track_id": 12
+    }
+  ],
+  "thrower_visible_pct": 92.7
+}
