@@ -1,0 +1,4 @@
+video,type,duration_sec,camera_cuts,other_people_in_frame,manual_throws,manual_times_sec,detected_throws,detected_times_sec,false_positives,missed
+yamamoto,long toss (single throw),5.5,no,no,1,2.8,1,2.80,0,0
+musgrove,bullpen,47.4,no,yes (pitching coach in foreground),3,3.0|19.3|31.2,3,3.03|19.20|31.17,0,0
+longtoss,long toss session (edited clip),48.5,yes,yes (coaches in background),6,6.6|11.6|16.9|23.4|31.3|43.3,6,6.71|11.38|16.79|23.60|31.28|43.43,0,0

@@ -1,0 +1,10 @@
+# videos are not stored in this repo
+*.mp4
+*.mov
+*.avi
+# model weights (downloaded automatically)
+*.pt
+# pose cache
+*.pkl
+__pycache__/
+.venv/

@@ -1,0 +1,64 @@
+{
+  "video": "longtoss.mp4",
+  "fps": 29.958701342272946,
+  "frames": 1454,
+  "camera_cuts_sec": [
+    13.89,
+    19.96
+  ],
+  "people_tracked": 10,
+  "thrower_tracks": [
+    24,
+    16,
+    25,
+    3,
+    15
+  ],
+  "throwing_arm": "R",
+  "throws_detected": 6,
+  "throws": [
+    {
+      "throw": 1,
+      "frame": 201,
+      "time_sec": 6.71,
+      "peak_arm_speed": 0.751,
+      "track_id": 3
+    },
+    {
+      "throw": 2,
+      "frame": 341,
+      "time_sec": 11.38,
+      "peak_arm_speed": 0.686,
+      "track_id": 15
+    },
+    {
+      "throw": 3,
+      "frame": 503,
+      "time_sec": 16.79,
+      "peak_arm_speed": 0.801,
+      "track_id": 16
+    },
+    {
+      "throw": 4,
+      "frame": 707,
+      "time_sec": 23.6,
+      "peak_arm_speed": 0.873,
+      "track_id": 24
+    },
+    {
+      "throw": 5,
+      "frame": 937,
+      "time_sec": 31.28,
+      "peak_arm_speed": 0.77,
+      "track_id": 25
+    },
+    {
+      "throw": 6,
+      "frame": 1301,
+      "time_sec": 43.43,
+      "peak_arm_speed": 0.528,
+      "track_id": 25
+    }
+  ],
+  "thrower_visible_pct": 95.0
+}

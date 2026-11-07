@@ -1,0 +1,36 @@
+{
+  "video": "musgrove.mp4",
+  "fps": 30.0,
+  "frames": 1422,
+  "camera_cuts_sec": [],
+  "people_tracked": 10,
+  "thrower_tracks": [
+    2
+  ],
+  "throwing_arm": "R",
+  "throws_detected": 3,
+  "throws": [
+    {
+      "throw": 1,
+      "frame": 91,
+      "time_sec": 3.03,
+      "peak_arm_speed": 0.997,
+      "track_id": 2
+    },
+    {
+      "throw": 2,
+      "frame": 576,
+      "time_sec": 19.2,
+      "peak_arm_speed": 1.237,
+      "track_id": 2
+    },
+    {
+      "throw": 3,
+      "frame": 935,
+      "time_sec": 31.17,
+      "peak_arm_speed": 1.144,
+      "track_id": 2
+    }
+  ],
+  "thrower_visible_pct": 89.9
+}
